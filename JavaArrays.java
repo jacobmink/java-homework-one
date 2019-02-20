@@ -11,27 +11,32 @@ public class JavaArrays{
         numArr.add(6);
         numArr.add(4);
         System.out.println(bubbleSort(numArr));
+        System.out.println(insertionSort(numArr));
+        System.out.println(numArr);
     }
     public static ArrayList<Integer> bubbleSort(ArrayList<Integer> numArr){
-        // int i = 0;
-        // int temp = numArr.get(i);
-        // while(temp > numArr.get(i + 1) && i + 1 < numArr.size()){
-        //     numArr.set(i, numArr.get(i + 1));
-        //     numArr.set(i + 1, temp);
-        //     i++;
-        // }
-        // return numArr;
 
         for(int i = 0; i < numArr.size() - 1; i++){
             for(int j = 0; j < numArr.size() - i - 1; j++){
-
+                if(numArr.get(j) > numArr.get(j + 1)){
+                    int temp = numArr.get(j);
+                    numArr.set(j, numArr.get(j + 1));
+                    numArr.set(j + 1, temp);
+                }
             }
-            int temp = numArr.get(i);
-            while(temp > numArr.get(i + 1)){
-                numArr.set(i, numArr.get(i + 1));
-                numArr.set(i + 1, temp);
-            }
+        }
+        return numArr;
+    }
+    public static ArrayList<Integer> insertionSort(ArrayList<Integer> numArr){
 
+        for(int i = 1; i < numArr.size(); i++){
+            int j = i;
+            while(numArr.get(j) < numArr.get(j - 1) && j > 0){
+                int temp = numArr.get(j - 1);
+                numArr.set(j - 1, j);
+                numArr.set(j, temp);
+                j--;
+            }
         }
         return numArr;
     }
